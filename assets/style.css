@@ -1,10 +1,9 @@
-h1 {
-    font-size: 50px;
-    color: red;
+.btn.submit-btn {
+    border-width: 4px;
+    padding: 7px;
+    font-size: medium;
+    width: fit-content;
 }
-
-button {
-height: 100%;
-width: 1000px;
-
+.btn:hover {
+    background-color: hsl(147, 64%, 41%);
 }
