@@ -38,19 +38,7 @@
 
 // show them their score and put in their initials to save their score STRETCH
         
-        
-        
-        
-        
-        
-        
-        
-
-
-        
-        
-         
-        
+    
         //  ? what type of of animals started appearing during this prehistoric era
         // ! birds 
         // reptiles, insects, sharks
@@ -96,16 +84,79 @@
         
         
         
-        // const questions = ["Most of the climate on Earth was ________?", "What type of animals started appearing for the first time during the Jurassic Era?", "How long did the Jurassic era last?", "What popular movie was inspired bt the Jurassic era?", "Due to warmer climates there was no ______ on Earth?"]
+        const questionIndex = [
+            {
+                question: 'what type of of animals started appearing during this prehistoric era',
+                answersArray: [
+                    { answer: 'reptiles', correct: false },
+                    { answer: 'birds', correct: true},
+                    { answer: 'insects', correct: false},
+                    { answer: 'sharks', correct: false}]    
+            },
+    
+
+        {
+            question: 'How long did the Jurassic era last?',
+        answersArray: [
+            {answer: '100 million years', correct: false},
+            {answer: '10 million years', correct: false},
+            {answer: '56 million years', correct: true},
+            {answer: '76 million years', correct: false}]
+        },
+{
+        question: 'what popular movie was made inspired by the beauty of the Jurassic era?',
+        answersArray :[
+        {answer: "Jurassic Park", correct: true},
+        {answer: "Jurassic Shark", correct: false},
+        {answer: "Jurassic City", correct: false},
+        {answer: "Triassic Venue", correct: false}]
+},
+
+     { question: 'Due to warmer climates there was no _____ on Earth.',
+        answersArray: [
+            {answer: 'crabs', correct: false},
+            {answer: 'mcdonalds', correct: false},
+            {answer: 'ice', correct: true},
+            {answer: 'polar bears', correct: false}]
+
+     },
+     { question: 'Most of the climate on Earth was _____________?',
+        answersArray: [
+            {answer: 'desert', correct: false},
+            {answer: 'tropical', correct: true},
+            {answer: 'arctic', correct: false},
+            {answer: 'there was no climate', correct: false}
+        ]},
+    ]
 
 
+    
         var timeClock = 60;
         var timeCountdown = "";
+        var changeQuestion = -1;
+        var finalScore;
         var currentScore = 0;
 
+        var timerElement = document.getElementById('timer');
+        var questionElement = document.getElementById('question');
+        var firstAnswer = document.getElementById('answer1');
+        var secondAnswer = document.getElementById('answer2');
+        var thirdAnswer = document.getElementById('answer3');
+        var fourthAnswer = document.getElementById('answer4');
+        var finalScoreElement = document.getElementById('finalScore');
         
+        var initialsElement = document.getElementById('');
+        
+        var questionRandomizer = questionRandom();
+        
+        function changeQuestion(curr, next) {
+            document.getElementById(curr).classList.add('hide');
+            document.getElementById(next).removeAttribute('class');
+        }
+        
+        // init
         function gameStart(event) {
-            setInterval( function(){
+            setInterval( function() {
                 // timer starts but probably doesnt end
                 console.log(timeClock);
                 timeClock--;
@@ -113,5 +164,58 @@
             
             }, 1000) 
         }
+         //     function questionRandom() {
+            //         let questionRandomizerClone = questionBank;
+            //         for (let i = 0; i < questionRandomizerClone.length; i++) {
+                
+//             let answersArray = questionRandomizerClone[i].answersArray;
+//             answersArray.sort(() => {
+//                 return (Math.floor(Math.random() *3) - 1);}
+//             );
+//             }
+        
+//     }
 
+
+// questionRandomizerClone = questionRandomizerClone.sort(() => {
+//     return (Math.floor(Math.random() *3) - 1);
+// });
+//     return questionRandomizerClone;
+
+
+function nextQuestion() {
+    questionRandomizer++
+    if (changeQuestion === questionRandomizer.length) {
+        timeClock = 0;
+        gameOver();
+    } 
+    else {
+        questionElement.textContent = questionRandomizer[changeQuestion].question;
+        // answer buttons work?????
+        let arr = [firstAnswer, secondAnswer, thirdAnswer, fourthAnswer];
+        let i = 0;
+        arr.forEach(element => {
+            element.textContent = questionRandomizer[changeQuestion].answersArray[i].answer;
+            i++
+        }, i);
+        }
+    }
+
+
+   // answer clicks
+    function handleAnswerClick(event) {
+        let correctAnswer = getCorrectAnswer(currentQuestion);
+        if (event.target.textContent === correctAnswer) {
+            currentScore += 10;
+            event.target.classList.add('correct')
+        } else {
+            secondsLeft -= 10;
+            event.target.classList.add('wrong')
+        }
+        setTimeout(
+            () => {
+                event.target.className = 'btn';
+                nextQuestion();
+            }, 500);
+        }
 
