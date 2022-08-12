@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,31 +10,37 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <header></header>
+
 <body>
-    <div class = "startup"></div>
+    <div class="startup"></div>
     <div>Time Remaining: <span id="timer">60</span></div>
     <h1>Jurassic Era Quiz</h1>
-    <p>This is a quiz to test your knowledge on the most prominent era in the time when dinosaurs roamed the Earth! Good luck! OHHHH! And you'll be timed. And if you miss an answer you lose time. Good luck though</p>
-    
-    <button id="start" class="btn" onclick="gameStart(event)" >Start</button>
+    <p>This is a quiz to test your knowledge on the most prominent era in the time when dinosaurs roamed the Earth! Good
+        luck! OHHHH! And you'll be timed. And if you miss an answer you lose time. Good luck though</p>
+
+    <button id="start" class="btn" onclick="gameStart(event)">Start</button>
 
     <div id="questionContainer">
         <h2 id="question"></h2>
-        <button id="answer1" class="btn" onclick="handleAnswerClick(event)"></button>
-        <button id="answer2" class="btn" onclick="handleAnswerClick(event)"></button>
-        <button id="answer3" class="btn" onclick="handleAnswerClick(event)"></button>
-        <button id="answer4" class="btn" onclick="handleAnswerClick(event)"></button>
+        <div class="buttonDiv">
+            <button id="answer1" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer2" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer3" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="answer4" class="btn" onclick="handleAnswerClick(event)"></button>
+            <button id="next-btn" onclick="handleAnswerClick()"></button>
         </div>
+    </div>
 
 
-        <div id="resultsPage" class = "hide">
-            <h2>You survived!</h2>
-            <p>Your final score is <span id="finalScore"></span>/50</p>
-            <label>Enter your initials: </label>
-            <input type="text" id="initialInput" size="6">
-            <button id="submitHighscore" class="btn submit-btn" onclick="handleSubmit()">Submit Score</button>
-        </div>
+    <div id="resultsPage" class="hide">
+        <h2>You survived!</h2>
+        <p>Your final score is <span id="finalScore"></span>/50</p>
+        <label>Enter your initials: </label>
+        <input type="text" id="initialInput" size="6">
+        <button id="submitHighscore" class="btn submit-btn" onclick="handleSubmit()">Submit Score</button>
+    </div>
 
-    <script src = "./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
+
 </html>

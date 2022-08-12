@@ -7,3 +7,7 @@
 .btn:hover {
     background-color: hsl(147, 64%, 41%);
 }
+
+.hide {
+    display: none;
+}
